@@ -1,6 +1,6 @@
 import messaging from '@react-native-firebase/messaging';
 import PushNotification from 'react-native-push-notification';
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 PushNotification.createChannel(
   {
@@ -16,13 +16,14 @@ const NotificationController = props => {
     //     console.log(channel_ids);
     // })
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      PushNotification.localNotification({
-        message: remoteMessage.notification.body,
-        title: remoteMessage.notification.title,
-        bigPictureUrl: remoteMessage.notification.android.imageUrl,
-        channelId: true,
-        vibrate: true,
-      });
+      console.log("🚀 ~ unsubscribe ~ remoteMessage:", remoteMessage)
+      // PushNotification.localNotification({
+      //   message: remoteMessage.notification.body,
+      //   title: remoteMessage.notification.title,
+      //   bigPictureUrl: remoteMessage.notification.android.imageUrl,
+      //   channelId: true,
+      //   vibrate: true,
+      // });
     });
     return unsubscribe;
   }, []);
